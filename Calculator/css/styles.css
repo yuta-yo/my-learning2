@@ -1,0 +1,70 @@
+table {
+  table-layout: fixed;
+  /* text-align: center; */
+  border-spacing: 10px;
+  background-color: black;
+  padding: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;/* check用 */
+}
+
+td {
+  width: 60px;
+  height: 60px;
+  border-radius: 31px 31px 31px 31px/ 31px 31px 31px 31px;
+  font-size: 24px;
+}
+
+.Others {
+  background-color:gainsboro;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.Operator{
+  background-color: orange;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.Number {
+  background-color:rgb(67, 67, 67);
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+#num0 {
+  background-color:rgb(67, 67, 67);
+  color: white;
+  text-align: left;
+  padding-left: 23px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#display {
+  color: white;
+  text-align:right;
+  font-size: 60px;
+}
+
+/* check用 */
+input {
+  width: 60px;
+  height: 60px;
+  border-radius: 31px 31px 31px 31px/ 31px 31px 31px 31px;
+  font-size: 24px;
+}
+
+#check {
+font-size: 15px;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+}

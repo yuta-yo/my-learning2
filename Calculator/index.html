@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <table>  
+    <!-- 結果表示画面 -->
+    <tr>
+      <td id="display" colspan="4">0</td>
+    </tr>
+
+    <!-- C,(+/-,%,÷) -->
+    <tr>
+      <td class="Others" id="clear" onclick="funcClear()">C</td><!-- <td><input class="Others" id="clear" type=button value="C"></td> --><!-- <td class="Others" id="pulsminus">+/-</td><td class="Others" id="percent">%</td><td class="Operator" id="divide">÷</td> -->
+    </tr>
+    
+    <!-- 7,8,9,(×) -->
+    <tr>
+      <td class="Number" id="num7" onclick="func7()">7</td><td class="Number" id="num8" onclick="func8()">8</td><td class="Number" id="num9" onclick="func9()">9</td><!-- <td class="Operator" id="times">×</td> -->
+    </tr>
+    
+    <!-- 4,5,6,(-) -->
+    <tr>
+      <td class="Number" id="num4" onclick="func4()">4</td><td class="Number" id="num5" onclick="func5()">5</td><td class="Number" id="num6" onclick="func6()">6</td><!-- <td class="Operator" id="minus">-</td> -->
+    </tr>
+    
+    <!-- 1,2,3,+ -->
+    <tr>
+      <td class="Number" id="num1" onclick="func1()">1</td><td class="Number" id="num2" onclick="func2()">2</td><td class="Number" id="num3" onclick="func3()">3</td><td class="Operator" id="plus" onclick="funcPlus()" onclick="funcPlusColor()">+</td>
+    </tr>
+    
+    <!-- 0,(.),= -->
+    <tr>
+      <td id="num0" colspan="2" onclick="func0()">0</td><!-- <td class="Number" id="point">.</td> --><td></td><td class="Operator" id="equals" onclick="funcEquals()">=</td>
+    </tr>
+  </table>
+  
+  <input type="button" onclick="check()" value="check" id="check">
+
+  <script src="src/main.js"></script>
+</body>
+</html>
