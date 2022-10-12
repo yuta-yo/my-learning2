@@ -1,69 +1,149 @@
-table {
-  table-layout: fixed;
-  /* text-align: center; */
-  border-spacing: 10px;
-  background-color: black;
-  padding: 10px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;/* check用 */
+:root {
+  --operatorColor: orange;
+  --clearColor: gainsboro;
+  --numberColor: rgb(67, 67, 67);
+  --backgroundColor: black;
 }
 
-td {
-  width: 60px;
-  height: 60px;
-  border-radius: 31px 31px 31px 31px/ 31px 31px 31px 31px;
+#grid {
+  display: grid;
+  width: 270px;
+  grid-template-columns: repeat(4, 60px);
+  grid-template-rows: 80px repeat(5, 60px);
+  gap: 10px;
+  background-color: var(--backgroundColor);
+  padding: 20px;
   font-size: 24px;
 }
 
-.Others {
-  background-color:gainsboro;
+.others {
+  background-color: var(--clearColor);
   color: black;
   text-align: center;
+  line-height: 250%;
+  position: relative;
   cursor: pointer;
   user-select: none;
+  border-radius: 30px;
 }
 
-.Operator{
-  background-color: orange;
+.operator{
+  background-color: var(--operatorColor);
   color: white;
   text-align: center;
+  line-height: 230%;
   cursor: pointer;
   user-select: none;
+  border-radius: 30px;
 }
 
-.Number {
-  background-color:rgb(67, 67, 67);
+.number {
+  background-color: var(--numberColor);
   color: white;
   text-align: center;
+  line-height: 250%;
   cursor: pointer;
   user-select: none;
-}
-
-#num0 {
-  background-color:rgb(67, 67, 67);
-  color: white;
-  text-align: left;
-  padding-left: 23px;
-  cursor: pointer;
-  user-select: none;
-}
+  border-radius: 30px;
+ }
 
 #display {
   color: white;
-  text-align:right;
+  text-align: right;
   font-size: 60px;
+  grid-column: 1 / 5;
+  grid-row: 1 / 2;
+}
+
+#clear {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+#plusminus {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+#percent {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+#divide {
+  grid-column: 4 / 5;
+  grid-row: 2 / 3;
+}
+
+#num7 {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+#num8 {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+#num9 {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+}
+#times {
+  grid-column: 4 / 5;
+  grid-row: 3 / 4;
+}
+
+#num4 {
+  grid-column: 1 / 2;
+  grid-row: 4 / 5;
+}
+#num5 {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+}
+#num6 {
+  grid-column: 3 / 4;
+  grid-row: 4 / 5;
+}
+#minus {
+  grid-column: 4 / 5;
+  grid-row: 4 / 5;
+}
+
+#num1 {
+  grid-column: 1 / 2;
+  grid-row: 5 / 6;
+}
+#num2 {
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+}
+#num3 {
+  grid-column: 3 / 4;
+  grid-row: 5 / 6;
+}
+#plus {
+  grid-column: 4 / 5;
+  grid-row: 5 / 6;
+}
+
+#num0 {
+  grid-column: 1 / 3;
+  grid-row: 6 / 7;
+  text-align: left;
+  padding-left: 22px;
+}
+/* #point {
+  grid-column: 3 / 4;
+  grid-row: 6 / 7;
+}*/
+#equal {
+  grid-column: 4 / 5;
+  grid-row: 6 / 7;
 }
 
 /* check用 */
-input {
+#check {
   width: 60px;
   height: 60px;
-  border-radius: 31px 31px 31px 31px/ 31px 31px 31px 31px;
-  font-size: 24px;
-}
-
-#check {
-font-size: 15px;
+  border-radius: 50%;
+  font-size: 15px;
   cursor: pointer;
   user-select: none;
   text-align: center;
