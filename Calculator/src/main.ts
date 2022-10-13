@@ -1,4 +1,4 @@
-const display:HTMLElement = <HTMLElement>document.getElementById("display");
+const display: HTMLElement = <HTMLElement>document.getElementById("display");
 
 let calculation: string = ""
 
@@ -7,7 +7,7 @@ function onClickNumberBtn(btnNum: string): void {
   if (display == null) {
     return
   }
-  if (display.textContent?.slice(0,1) === "0" || calculation.slice(-3) === (" + ") || calculation === "") {
+  if (display.textContent?.slice(0, 1) === "0" || calculation.slice(-3) === " + " || calculation === "") {
     display.textContent = btnNum
   } else {
     display.textContent += btnNum
@@ -17,7 +17,7 @@ function onClickNumberBtn(btnNum: string): void {
 
 function onClickPlus(): void {
   if (!display.textContent) {
-    console.error("textContext is null.")
+    console.error("textContent is null.")
     return
   }
   if (calculation === "") {
