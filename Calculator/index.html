@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>Calculator</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="src/main.js"></script>
 </head>
 <body>
   <div id="grid">
     <div id="display">0</div>
     <div id="clear" class="others" onclick="onClickClear()">C</div>
-    <!-- <div id="pulsminus" class="others" onclick="">+/-</div> -->
-    <!-- <div id="percent" class="others" onclick="">%</div> -->
-    <!-- <div id="divide" class="operator" onclick="">÷</div> -->
     <div id="num7" class="number" onclick="onClickNumberBtn('7')">7</div>
     <div id="num8" class="number" onclick="onClickNumberBtn('8')">8</div>
     <div id="num9" class="number" onclick="onClickNumberBtn('9')">9</div>
-    <!-- <div id="times" class="operator" onclick="onClick()">×</div> -->
     <div id="num4" class="number" onclick="onClickNumberBtn('4')">4</div>
     <div id="num5" class="number" onclick="onClickNumberBtn('5')">5</div>
     <div id="num6" class="number" onclick="onClickNumberBtn('6')">6</div>
-    <!-- <div id="minus" class="operator" onclick="">-</div> -->
     <div id="num1" class="number" onclick="onClickNumberBtn('1')">1</div>
     <div id="num2" class="number" onclick="onClickNumberBtn('2')">2</div>
     <div id="num3" class="number" onclick="onClickNumberBtn('3')">3</div>
     <div id="plus" class="operator" onclick="onClickPlus()">+</div>
     <div id="num0" class="number" onclick="onClickNumberBtn('0')">0</div>
-    <!-- <div id="point" class="number" onclick="">.</div> -->
     <div id="equal" class="operator" onclick="onClickEqual()">=</div>
   </div>
   <input type="button" onclick="check()" value="check" id="check">
-  <script src="src/main.js"></script>
 </body>
 </html>

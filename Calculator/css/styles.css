@@ -59,18 +59,6 @@
   grid-column: 1 / 2;
   grid-row: 2 / 3;
 }
-#plusminus {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-}
-#percent {
-  grid-column: 3 / 4;
-  grid-row: 2 / 3;
-}
-#divide {
-  grid-column: 4 / 5;
-  grid-row: 2 / 3;
-}
 
 #num7 {
   grid-column: 1 / 2;
@@ -84,10 +72,6 @@
   grid-column: 3 / 4;
   grid-row: 3 / 4;
 }
-#times {
-  grid-column: 4 / 5;
-  grid-row: 3 / 4;
-}
 
 #num4 {
   grid-column: 1 / 2;
@@ -99,10 +83,6 @@
 }
 #num6 {
   grid-column: 3 / 4;
-  grid-row: 4 / 5;
-}
-#minus {
-  grid-column: 4 / 5;
   grid-row: 4 / 5;
 }
 
@@ -129,10 +109,6 @@
   text-align: left;
   padding-left: 22px;
 }
-/* #point {
-  grid-column: 3 / 4;
-  grid-row: 6 / 7;
-}*/
 #equal {
   grid-column: 4 / 5;
   grid-row: 6 / 7;
