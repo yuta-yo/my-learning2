@@ -3,7 +3,6 @@ const display: HTMLElement = <HTMLElement>document.getElementById("display");
 let calculation: string = ""
 
 function onClickNumberBtn(btnNum: string): void {
-  const display: HTMLElement | null = <HTMLElement>document.getElementById("display");
   if (display == null) {
     return
   }

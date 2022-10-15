@@ -2,11 +2,10 @@ var display = document.getElementById("display");
 var calculation = "";
 function onClickNumberBtn(btnNum) {
     var _a;
-    var display = document.getElementById("display");
     if (display == null) {
         return;
     }
-    if (((_a = display.textContent) === null || _a === void 0 ? void 0 : _a.slice(0, 1)) === "0" || calculation.slice(-3) === (" + ") || calculation === "") {
+    if (((_a = display.textContent) === null || _a === void 0 ? void 0 : _a.slice(0, 1)) === "0" || calculation.slice(-3) === " + " || calculation === "") {
         display.textContent = btnNum;
     }
     else {
@@ -16,7 +15,7 @@ function onClickNumberBtn(btnNum) {
 }
 function onClickPlus() {
     if (!display.textContent) {
-        console.error("textContext is null.");
+        console.error("textContent is null.");
         return;
     }
     if (calculation === "") {
