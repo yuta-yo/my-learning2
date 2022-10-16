@@ -24,7 +24,7 @@ function onClickPlus() {
     calculation += " + ";
 }
 function onClickEqual() {
-    display.textContent = eval(calculation);
+    display.textContent = new Function("return " + calculation)();
     calculation = "";
 }
 function onClickClear() {

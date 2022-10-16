@@ -25,9 +25,9 @@ function onClickPlus(): void {
   calculation += " + "
 }
 
-function onClickEqual(): void {
-  display.textContent = eval(calculation)
-  calculation = ""
+function onClickEqual(): void {  
+  display.textContent = new Function("return " + calculation)();
+  calculation = "";
 }
 
 function onClickClear(): void {
