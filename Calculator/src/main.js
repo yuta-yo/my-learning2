@@ -30,6 +30,10 @@ function onClickEqual() {
     calculation = "";
 }
 function onClickClear() {
+    if (display.textContent === "0") {
+        calculation = "";
+    }
+    calculation = calculation.replace(/\d*$/, "");
     display.textContent = "0";
 }
 // check用

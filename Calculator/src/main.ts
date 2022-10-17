@@ -33,7 +33,11 @@ function onClickEqual(): void {
 }
 
 function onClickClear(): void {
-  display.textContent = "0"
+  if (display.textContent === "0") {
+    calculation = "";
+  }
+  calculation = calculation.replace(/\d*$/, "");
+  display.textContent = "0";
 }
 
 // check用
