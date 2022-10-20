@@ -1,43 +1,66 @@
+// [leftNumber] [operator(+,-)] [rightNumber] = displayの式をイメージしています。
+var leftNumber = "";
+var rightNumber = "";
+var operator = "";
 var display = document.getElementById("display");
-var calculation = "";
-function onClickNumberBtn(btnNum) {
-    var _a;
-    if (display == null) {
+var onClickNumberBtn = function (num) {
+    if (!operator) {
+        leftNumber = leftNumber + num;
+        display.textContent = leftNumber;
         return;
     }
-    // display画面に0か、calculationがカラか末尾に+がある場合は、display画面に押したボタンの数字が入力される。
-    // それ以外の場合はdisplay画面の数字の後ろに押したボタンの数字を付け加える。
-    if (((_a = display.textContent) === null || _a === void 0 ? void 0 : _a.slice(0, 1)) === "0" || calculation.slice(-3) === " + " || calculation === "") {
-        display.textContent = btnNum;
+    if (operator) {
+        rightNumber = rightNumber + num;
+        display.textContent = rightNumber;
     }
-    else {
-        display.textContent += btnNum;
-    }
-    calculation += btnNum;
-}
-function onClickPlus() {
-    if (!display.textContent) {
-        console.error("textContent is null.");
+};
+var onClickPlusAndMinus = function (plusOrMinus) {
+    if (operator === "plus" || operator === "minus") {
+        var totalStr = calcForString(operator, leftNumber, rightNumber);
+        display.textContent = totalStr;
+        leftNumber = totalStr;
+        operator = plusOrMinus;
+        rightNumber = "";
         return;
     }
-    if (calculation === "") {
-        calculation = display.textContent;
+    if (!display.textContent)
+        return;
+    if (!leftNumber) {
+        leftNumber = display.textContent;
     }
-    calculation += " + ";
-}
-function onClickEqual() {
-    display.textContent = new Function("return " + calculation)();
-    calculation = "";
-}
-function onClickClear() {
-    if (display.textContent === "0") {
-        calculation = "";
+    operator = plusOrMinus;
+};
+var onClickEqual = function () {
+    if (!leftNumber)
+        return;
+    if (leftNumber && !operator)
+        return;
+    var totalStr = calcForString(operator, leftNumber, rightNumber);
+    display.textContent = totalStr;
+    leftNumber = "";
+    operator = "";
+    rightNumber = "";
+};
+var onClickClear = function () {
+    if (rightNumber) {
+        rightNumber = "";
+        display.textContent = leftNumber;
+        return;
     }
-    calculation = calculation.replace(/\d*$/, "");
+    leftNumber = "";
+    operator = "";
     display.textContent = "0";
-}
-// check用
+};
+var calcForString = function (operator, num1, num2) {
+    if (operator === "plus") {
+        return (Number(num1) + Number(num2)).toString();
+    }
+    if (operator === "minus") {
+        return (Number(num1) - Number(num2)).toString();
+    }
+    return "";
+};
+//確認用
 function check() {
-    console.log(calculation);
-    console.log(display.textContent);
+    console.log(leftNumber + operator + rightNumber);
 }

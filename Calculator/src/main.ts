@@ -1,47 +1,81 @@
+type CalcOperator = "plus" | "minus" | "";
+
+// [leftNumber] [operator(+,-)] [rightNumber] = displayの式をイメージしています。
+let leftNumber: string = "";
+let rightNumber: string = "";
+
+let operator: CalcOperator = "";
+
 const display: HTMLElement = <HTMLElement>document.getElementById("display");
 
-let calculation: string = ""
+const onClickNumberBtn = (num: string): void => {
+  if(!operator) {
+    leftNumber = leftNumber + num;
+    display.textContent = leftNumber;
+    return;
+  }
 
-function onClickNumberBtn(btnNum: string): void {
-  if (display == null) {
-    return
+  if(operator) {
+    rightNumber = rightNumber + num;
+    display.textContent = rightNumber;
   }
-  // display画面に0か、calculationがカラか末尾に+がある場合は、display画面に押したボタンの数字が入力される。
-  // それ以外の場合はdisplay画面の数字の後ろに押したボタンの数字を付け加える。
-  if (display.textContent?.slice(0, 1) === "0" || calculation.slice(-3) === " + " || calculation === "") {
-    display.textContent = btnNum
-  } else {
-    display.textContent += btnNum
-  }
-  calculation += btnNum
 }
 
-function onClickPlus(): void {
-  if (!display.textContent) {
-    console.error("textContent is null.")
-    return
+const onClickPlusAndMinus = (plusOrMinus: "plus" | "minus"): void => {
+  if(operator === "plus" || operator === "minus") {   
+    const totalStr = calcForString(operator, leftNumber, rightNumber);
+    display.textContent = totalStr;
+    leftNumber = totalStr;
+    operator = plusOrMinus;
+    rightNumber = "";
+    return;
   }
-  if (calculation === "") {
-    calculation = display.textContent
+
+  if (!display.textContent) return;
+  if(!leftNumber) {
+    leftNumber = display.textContent;
   }
-  calculation += " + "
+
+  operator = plusOrMinus;
 }
 
-function onClickEqual(): void {  
-  display.textContent = new Function("return " + calculation)();
-  calculation = "";
+const onClickEqual = (): void => {
+  if(!leftNumber) return;
+
+  if(leftNumber && !operator) return ;
+
+  const totalStr = calcForString(operator, leftNumber, rightNumber);
+  display.textContent = totalStr;
+  leftNumber = "";
+  operator = "";
+  rightNumber = "";
 }
 
-function onClickClear(): void {
-  if (display.textContent === "0") {
-    calculation = "";
-  }
-  calculation = calculation.replace(/\d*$/, "");
+const onClickClear = (): void => {
+  if(rightNumber) {
+    rightNumber = "";
+    display.textContent = leftNumber;
+    return;
+  } 
+  
+  leftNumber = "";
+  operator = "";
   display.textContent = "0";
 }
 
-// check用
+const calcForString = (operator: CalcOperator, num1: string, num2: string): string => {
+  if(operator === "plus") {
+    return  (Number(num1) + Number(num2)).toString();
+  }
+
+  if(operator === "minus") {
+    return (Number(num1) - Number(num2)).toString();
+  }
+
+  return "";
+}
+
+//確認用
 function check(): void {
-  console.log(calculation)
-  console.log(display.textContent)
+  console.log(leftNumber + operator + rightNumber);
 }
