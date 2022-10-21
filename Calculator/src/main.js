@@ -1,66 +1,67 @@
-// [leftNumber] [operator(+,-)] [rightNumber] = displayの式をイメージしています。
-var leftNumber = "";
-var rightNumber = "";
-var operator = "";
+var calcItem = {
+    leftNumber: "",
+    rightNumber: "",
+    operator: ""
+};
 var display = document.getElementById("display");
 var onClickNumberBtn = function (num) {
-    if (!operator) {
-        leftNumber = leftNumber + num;
-        display.textContent = leftNumber;
+    if (!calcItem.operator) {
+        calcItem.leftNumber = calcItem.leftNumber + num;
+        display.textContent = calcItem.leftNumber;
         return;
     }
-    if (operator) {
-        rightNumber = rightNumber + num;
-        display.textContent = rightNumber;
+    if (calcItem.operator) {
+        calcItem.rightNumber = calcItem.rightNumber + num;
+        display.textContent = calcItem.rightNumber;
     }
 };
 var onClickPlusAndMinus = function (plusOrMinus) {
-    if (operator === "plus" || operator === "minus") {
-        var totalStr = calcForString(operator, leftNumber, rightNumber);
+    if (calcItem.operator === "plus" || calcItem.operator === "minus") {
+        var totalStr = calcForString(calcItem.leftNumber, calcItem.rightNumber);
         display.textContent = totalStr;
-        leftNumber = totalStr;
-        operator = plusOrMinus;
-        rightNumber = "";
+        calcItem.leftNumber = totalStr;
+        calcItem.operator = plusOrMinus;
+        calcItem.rightNumber = "";
         return;
     }
     if (!display.textContent)
         return;
-    if (!leftNumber) {
-        leftNumber = display.textContent;
+    if (!calcItem.leftNumber) {
+        calcItem.leftNumber = display.textContent;
     }
-    operator = plusOrMinus;
+    calcItem.operator = plusOrMinus;
 };
 var onClickEqual = function () {
-    if (!leftNumber)
+    if (!calcItem.leftNumber)
         return;
-    if (leftNumber && !operator)
+    if (calcItem.leftNumber && !calcItem.operator)
         return;
-    var totalStr = calcForString(operator, leftNumber, rightNumber);
+    var totalStr = calcForString(calcItem.leftNumber, calcItem.rightNumber);
     display.textContent = totalStr;
-    leftNumber = "";
-    operator = "";
-    rightNumber = "";
+    calcItem.leftNumber = "";
+    calcItem.operator = "";
+    calcItem.rightNumber = "";
 };
 var onClickClear = function () {
-    if (rightNumber) {
-        rightNumber = "";
-        display.textContent = leftNumber;
+    if (calcItem.rightNumber) {
+        calcItem.rightNumber = "";
+        display.textContent = calcItem.leftNumber;
         return;
     }
-    leftNumber = "";
-    operator = "";
+    calcItem.leftNumber = "";
+    calcItem.operator = "";
     display.textContent = "0";
 };
-var calcForString = function (operator, num1, num2) {
-    if (operator === "plus") {
+var calcForString = function (num1, num2) {
+    if (calcItem.operator === "plus") {
         return (Number(num1) + Number(num2)).toString();
     }
-    if (operator === "minus") {
+    if (calcItem.operator === "minus") {
         return (Number(num1) - Number(num2)).toString();
     }
     return "";
 };
 //確認用
 function check() {
-    console.log(leftNumber + operator + rightNumber);
+    console.log(calcItem.leftNumber + calcItem.operator + calcItem.rightNumber);
 }

@@ -1,74 +1,78 @@
-type CalcOperator = "plus" | "minus" | "";
-
 // [leftNumber] [operator(+,-)] [rightNumber] = displayの式をイメージしています。
-let leftNumber: string = "";
-let rightNumber: string = "";
-
-let operator: CalcOperator = "";
+type CalcItem = {
+  leftNumber: string;
+  rightNumber: string;
+  operator: "plus" | "minus" | "";
+}
+let calcItem: CalcItem = {
+  leftNumber: "",
+  rightNumber: "",
+  operator: "",
+}
 
 const display: HTMLElement = <HTMLElement>document.getElementById("display");
 
 const onClickNumberBtn = (num: string): void => {
-  if(!operator) {
-    leftNumber = leftNumber + num;
-    display.textContent = leftNumber;
+  if(!calcItem.operator) {
+    calcItem.leftNumber = calcItem.leftNumber + num;
+    display.textContent = calcItem.leftNumber;
     return;
   }
 
-  if(operator) {
-    rightNumber = rightNumber + num;
-    display.textContent = rightNumber;
+  if(calcItem.operator) {
+    calcItem.rightNumber = calcItem.rightNumber + num;
+    display.textContent = calcItem.rightNumber;
   }
 }
 
 const onClickPlusAndMinus = (plusOrMinus: "plus" | "minus"): void => {
-  if(operator === "plus" || operator === "minus") {   
-    const totalStr = calcForString(operator, leftNumber, rightNumber);
+  if(calcItem.operator === "plus" || calcItem.operator === "minus") {   
+    const totalStr = calcForString(calcItem.leftNumber, calcItem.rightNumber);
     display.textContent = totalStr;
-    leftNumber = totalStr;
-    operator = plusOrMinus;
-    rightNumber = "";
+    calcItem.leftNumber = totalStr;
+    calcItem.operator = plusOrMinus;
+    calcItem.rightNumber = "";
     return;
   }
 
   if (!display.textContent) return;
-  if(!leftNumber) {
-    leftNumber = display.textContent;
+  if(!calcItem.leftNumber) {
+    calcItem.leftNumber = display.textContent;
   }
 
-  operator = plusOrMinus;
+  calcItem.operator = plusOrMinus;
 }
 
 const onClickEqual = (): void => {
-  if(!leftNumber) return;
+  if(!calcItem.leftNumber) return;
 
-  if(leftNumber && !operator) return ;
+  if(calcItem.leftNumber && !calcItem.operator) return ;
 
-  const totalStr = calcForString(operator, leftNumber, rightNumber);
+  const totalStr = calcForString(calcItem.leftNumber, calcItem.rightNumber);
   display.textContent = totalStr;
-  leftNumber = "";
-  operator = "";
-  rightNumber = "";
+  calcItem.leftNumber = "";
+  calcItem.operator = "";
+  calcItem.rightNumber = "";
 }
 
 const onClickClear = (): void => {
-  if(rightNumber) {
-    rightNumber = "";
-    display.textContent = leftNumber;
+  if(calcItem.rightNumber) {
+    calcItem.rightNumber = "";
+    display.textContent = calcItem.leftNumber;
     return;
   } 
   
-  leftNumber = "";
-  operator = "";
+  calcItem.leftNumber = "";
+  calcItem.operator = "";
   display.textContent = "0";
 }
 
-const calcForString = (operator: CalcOperator, num1: string, num2: string): string => {
-  if(operator === "plus") {
+const calcForString = (num1: string, num2: string): string => {
+  if(calcItem.operator === "plus") {
     return  (Number(num1) + Number(num2)).toString();
   }
 
-  if(operator === "minus") {
+  if(calcItem.operator === "minus") {
     return (Number(num1) - Number(num2)).toString();
   }
 
@@ -77,5 +81,5 @@ const calcForString = (operator: CalcOperator, num1: string, num2: string): stri
 
 //確認用
 function check(): void {
-  console.log(leftNumber + operator + rightNumber);
+  console.log(calcItem.leftNumber + calcItem.operator + calcItem.rightNumber);
 }
