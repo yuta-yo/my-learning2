@@ -61,12 +61,12 @@ var onClickClear = function () {
         display.textContent = "0";
     }
 };
-var calcForString = function (num1, num2) {
+var calcForString = function (leftOperand, rightOperand) {
     if (calcItem.operator === "plus") {
-        return "".concat(Number(num1) + Number(num2));
+        return "".concat(Number(leftOperand) + Number(rightOperand));
     }
     else if (calcItem.operator === "minus") {
-        return "".concat(Number(num1) - Number(num2));
+        return "".concat(Number(leftOperand) - Number(rightOperand));
     }
     else {
         return "";

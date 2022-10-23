@@ -66,11 +66,11 @@ const onClickClear = (): void => {
   }
 }
 
-const calcForString = (num1: string, num2: string): string => {
+const calcForString = (leftOperand: string, rightOperand: string): string => {
   if(calcItem.operator === "plus") {
-    return `${Number(num1) + Number(num2)}`;
+    return `${Number(leftOperand) + Number(rightOperand)}`;
   } else if(calcItem.operator === "minus") {
-    return `${Number(num1) - Number(num2)}`;
+    return `${Number(leftOperand) - Number(rightOperand)}`;
   } else {
     return "";
   } 
