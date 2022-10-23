@@ -72,7 +72,7 @@ var calcForString = function (num1, num2) {
         return "";
     }
 };
-//確認用
+// 確認用
 function check() {
     console.log(calcItem.leftOperand + calcItem.operator + calcItem.rightOperand);
 }

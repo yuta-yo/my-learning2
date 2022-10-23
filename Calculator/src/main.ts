@@ -31,7 +31,7 @@ const onClickPlusAndMinus = (plusOrMinus: "plus" | "minus"): void => {
     calcItem.operator = plusOrMinus;
     calcItem.rightOperand = "";
     return;
-  } else if (!display.textContent) {
+  } else if(!display.textContent) {
     return;
   } else if(!calcItem.leftOperand) {
     calcItem.leftOperand = display.textContent;
@@ -44,7 +44,7 @@ const onClickEqual = (): void => {
   if(!calcItem.leftOperand) {
     return;
   } else if(calcItem.leftOperand && !calcItem.operator) {
-    return ;
+    return;
   } else {
     const totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
     display.textContent = totalStr;
@@ -68,7 +68,7 @@ const onClickClear = (): void => {
 
 const calcForString = (num1: string, num2: string): string => {
   if(calcItem.operator === "plus") {
-    return  `${Number(num1) + Number(num2)}`;
+    return `${Number(num1) + Number(num2)}`;
   } else if(calcItem.operator === "minus") {
     return `${Number(num1) - Number(num2)}`;
   } else {
@@ -76,7 +76,7 @@ const calcForString = (num1: string, num2: string): string => {
   } 
 }
 
-//確認用
+// 確認用
 function check(): void {
   console.log(calcItem.leftOperand + calcItem.operator + calcItem.rightOperand);
 }
