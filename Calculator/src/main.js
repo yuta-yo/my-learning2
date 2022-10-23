@@ -6,12 +6,12 @@ var calcItem = {
 var display = document.getElementById("display");
 var onClickNumberBtn = function (num) {
     if (!calcItem.operator) {
-        calcItem.leftOperand = calcItem.leftOperand + num;
+        calcItem.leftOperand = "".concat(calcItem.leftOperand).concat(num);
         display.textContent = calcItem.leftOperand;
         return;
     }
     if (calcItem.operator) {
-        calcItem.rightOperand = calcItem.rightOperand + num;
+        calcItem.rightOperand = "".concat(calcItem.rightOperand).concat(num);
         display.textContent = calcItem.rightOperand;
     }
 };
@@ -54,10 +54,10 @@ var onClickClear = function () {
 };
 var calcForString = function (num1, num2) {
     if (calcItem.operator === "plus") {
-        return (Number(num1) + Number(num2)).toString();
+        return "".concat(Number(num1) + Number(num2));
     }
     if (calcItem.operator === "minus") {
-        return (Number(num1) - Number(num2)).toString();
+        return "".concat(Number(num1) - Number(num2));
     }
     return "";
 };

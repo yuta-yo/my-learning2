@@ -14,13 +14,13 @@ const display: HTMLElement = <HTMLElement>document.getElementById("display");
 
 const onClickNumberBtn = (num: string): void => {
   if(!calcItem.operator) {
-    calcItem.leftOperand = calcItem.leftOperand + num;
+    calcItem.leftOperand = `${calcItem.leftOperand}${num}`;
     display.textContent = calcItem.leftOperand;
     return;
   }
 
   if(calcItem.operator) {
-    calcItem.rightOperand = calcItem.rightOperand + num;
+    calcItem.rightOperand = `${calcItem.rightOperand}${num}`;
     display.textContent = calcItem.rightOperand;
   }
 }
@@ -69,13 +69,13 @@ const onClickClear = (): void => {
 
 const calcForString = (num1: string, num2: string): string => {
   if(calcItem.operator === "plus") {
-    return  (Number(num1) + Number(num2)).toString();
+    return  `${Number(num1) + Number(num2)}`;
   }
 
   if(calcItem.operator === "minus") {
-    return (Number(num1) - Number(num2)).toString();
+    return `${Number(num1) - Number(num2)}`;
   }
-
+  
   return "";
 }
 
