@@ -1,54 +1,54 @@
 var calcItem = {
-    leftNumber: "",
-    rightNumber: "",
+    leftOperand: "",
+    rightOperand: "",
     operator: ""
 };
 var display = document.getElementById("display");
 var onClickNumberBtn = function (num) {
     if (!calcItem.operator) {
-        calcItem.leftNumber = calcItem.leftNumber + num;
-        display.textContent = calcItem.leftNumber;
+        calcItem.leftOperand = calcItem.leftOperand + num;
+        display.textContent = calcItem.leftOperand;
         return;
     }
     if (calcItem.operator) {
-        calcItem.rightNumber = calcItem.rightNumber + num;
-        display.textContent = calcItem.rightNumber;
+        calcItem.rightOperand = calcItem.rightOperand + num;
+        display.textContent = calcItem.rightOperand;
     }
 };
 var onClickPlusAndMinus = function (plusOrMinus) {
     if (calcItem.operator === "plus" || calcItem.operator === "minus") {
-        var totalStr = calcForString(calcItem.leftNumber, calcItem.rightNumber);
+        var totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
         display.textContent = totalStr;
-        calcItem.leftNumber = totalStr;
+        calcItem.leftOperand = totalStr;
         calcItem.operator = plusOrMinus;
-        calcItem.rightNumber = "";
+        calcItem.rightOperand = "";
         return;
     }
     if (!display.textContent)
         return;
-    if (!calcItem.leftNumber) {
-        calcItem.leftNumber = display.textContent;
+    if (!calcItem.leftOperand) {
+        calcItem.leftOperand = display.textContent;
     }
     calcItem.operator = plusOrMinus;
 };
 var onClickEqual = function () {
-    if (!calcItem.leftNumber)
+    if (!calcItem.leftOperand)
         return;
-    if (calcItem.leftNumber && !calcItem.operator)
+    if (calcItem.leftOperand && !calcItem.operator)
         return;
-    var totalStr = calcForString(calcItem.leftNumber, calcItem.rightNumber);
+    var totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
     display.textContent = totalStr;
-    calcItem.leftNumber = "";
+    calcItem.leftOperand = "";
     calcItem.operator = "";
-    calcItem.rightNumber = "";
+    calcItem.rightOperand = "";
 };
 var onClickClear = function () {
-    if (calcItem.rightNumber) {
-        calcItem.rightNumber = "";
-        display.textContent = calcItem.leftNumber;
+    if (calcItem.rightOperand) {
+        calcItem.rightOperand = "";
+        display.textContent = calcItem.leftOperand;
         return;
     }
-    calcItem.leftNumber = "";
+    calcItem.leftOperand = "";
     calcItem.operator = "";
     display.textContent = "0";
 };
@@ -63,5 +63,5 @@ var calcForString = function (num1, num2) {
 };
 //確認用
 function check() {
-    console.log(calcItem.leftNumber + calcItem.operator + calcItem.rightNumber);
+    console.log(calcItem.leftOperand + calcItem.operator + calcItem.rightOperand);
 }
