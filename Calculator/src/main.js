@@ -29,6 +29,7 @@ var onClickPlusAndMinus = function (plusOrMinus) {
     }
     else if (!calcItem.leftOperand) {
         calcItem.leftOperand = display.textContent;
+        calcItem.operator = plusOrMinus;
     }
     else {
         calcItem.operator = plusOrMinus;
