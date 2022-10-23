@@ -10,7 +10,7 @@ var onClickNumberBtn = function (num) {
         display.textContent = calcItem.leftOperand;
         return;
     }
-    if (calcItem.operator) {
+    else if (calcItem.operator) {
         calcItem.rightOperand = "".concat(calcItem.rightOperand).concat(num);
         display.textContent = calcItem.rightOperand;
     }
@@ -24,23 +24,30 @@ var onClickPlusAndMinus = function (plusOrMinus) {
         calcItem.rightOperand = "";
         return;
     }
-    if (!display.textContent)
+    else if (!display.textContent) {
         return;
-    if (!calcItem.leftOperand) {
+    }
+    else if (!calcItem.leftOperand) {
         calcItem.leftOperand = display.textContent;
     }
-    calcItem.operator = plusOrMinus;
+    else {
+        calcItem.operator = plusOrMinus;
+    }
 };
 var onClickEqual = function () {
-    if (!calcItem.leftOperand)
+    if (!calcItem.leftOperand) {
         return;
-    if (calcItem.leftOperand && !calcItem.operator)
+    }
+    else if (calcItem.leftOperand && !calcItem.operator) {
         return;
-    var totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
-    display.textContent = totalStr;
-    calcItem.leftOperand = "";
-    calcItem.operator = "";
-    calcItem.rightOperand = "";
+    }
+    else {
+        var totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
+        display.textContent = totalStr;
+        calcItem.leftOperand = "";
+        calcItem.operator = "";
+        calcItem.rightOperand = "";
+    }
 };
 var onClickClear = function () {
     if (calcItem.rightOperand) {
@@ -48,18 +55,22 @@ var onClickClear = function () {
         display.textContent = calcItem.leftOperand;
         return;
     }
-    calcItem.leftOperand = "";
-    calcItem.operator = "";
-    display.textContent = "0";
+    else {
+        calcItem.leftOperand = "";
+        calcItem.operator = "";
+        display.textContent = "0";
+    }
 };
 var calcForString = function (num1, num2) {
     if (calcItem.operator === "plus") {
         return "".concat(Number(num1) + Number(num2));
     }
-    if (calcItem.operator === "minus") {
+    else if (calcItem.operator === "minus") {
         return "".concat(Number(num1) - Number(num2));
     }
-    return "";
+    else {
+        return "";
+    }
 };
 //確認用
 function check() {
