@@ -44,9 +44,11 @@ var onClickEqual = function () {
     if (calcItem.leftOperand && calcItem.operator) {
         var totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
         display.textContent = totalStr;
-        calcItem.leftOperand = "";
-        calcItem.operator = "";
-        calcItem.rightOperand = "";
+        calcItem = {
+            leftOperand: "",
+            operator: "",
+            rightOperand: ""
+        };
     }
 };
 var onClickClear = function () {

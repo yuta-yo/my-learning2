@@ -50,9 +50,11 @@ const onClickEqual = (): void => {
   if(calcItem.leftOperand && calcItem.operator) {
     const totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
     display.textContent = totalStr;
-    calcItem.leftOperand = "";
-    calcItem.operator = "";
-    calcItem.rightOperand = "";
+    calcItem = {
+      leftOperand: "",
+      operator: "",
+      rightOperand: "",
+    }
   }
 }
 
