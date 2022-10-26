@@ -39,8 +39,11 @@ const onClickPlusAndMinus = (plusOrMinus: "plus" | "minus"): void => {
   } else if(!display.textContent) {
     return;
   } else if(!calcItem.leftOperand) {
-    calcItem.leftOperand = display.textContent;
-    calcItem.operator = plusOrMinus;
+    calcItem = {
+      ...calcItem,
+      leftOperand: display.textContent,
+      operator: plusOrMinus,
+    }
   } else {
     calcItem.operator = plusOrMinus;
   }
@@ -64,8 +67,11 @@ const onClickClear = (): void => {
     display.textContent = calcItem.leftOperand;
     return;
   } else {
-    calcItem.leftOperand = "";
-    calcItem.operator = "";
+    calcItem = {
+      ...calcItem,
+      leftOperand: "",
+      operator: "",
+    }
     display.textContent = "0";
   }
 }
