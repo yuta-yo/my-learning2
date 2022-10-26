@@ -1,3 +1,8 @@
+enum OPERATOR {
+  PLUS = "plus",
+  MINUS = "minus" 
+}
+
 // [leftOperand] [operator(+,-)] [rightOperand] = displayの式をイメージしています。
 type CalcItem = {
   leftOperand: string;

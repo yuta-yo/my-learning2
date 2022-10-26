@@ -1,3 +1,8 @@
+var OPERATOR;
+(function (OPERATOR) {
+    OPERATOR["PLUS"] = "plus";
+    OPERATOR["MINUS"] = "minus";
+})(OPERATOR || (OPERATOR = {}));
 var calcItem = {
     leftOperand: "",
     rightOperand: "",
