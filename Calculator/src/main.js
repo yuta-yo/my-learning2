@@ -74,5 +74,5 @@ var calcForString = function (leftOperand, rightOperand) {
 };
 // 確認用
 function check() {
-    console.log(calcItem.leftOperand + calcItem.operator + calcItem.rightOperand);
+    console.log("".concat(calcItem.leftOperand).concat(calcItem.operator).concat(calcItem.rightOperand));
 }
