@@ -24,7 +24,6 @@ var onClickNumberBtn = function (num) {
     if (!calcItem.operator) {
         calcItem.leftOperand = "".concat(calcItem.leftOperand).concat(num);
         display.textContent = calcItem.leftOperand;
-        return;
     }
     else if (calcItem.operator) {
         calcItem.rightOperand = "".concat(calcItem.rightOperand).concat(num);
@@ -67,7 +66,6 @@ var onClickClear = function () {
     if (calcItem.rightOperand) {
         calcItem.rightOperand = "";
         display.textContent = calcItem.leftOperand;
-        return;
     }
     else {
         calcItem = __assign(__assign({}, calcItem), { leftOperand: "", operator: "" });

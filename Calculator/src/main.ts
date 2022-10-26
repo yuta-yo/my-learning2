@@ -21,7 +21,6 @@ const onClickNumberBtn = (num: string): void => {
   if(!calcItem.operator) {
     calcItem.leftOperand = `${calcItem.leftOperand}${num}`;
     display.textContent = calcItem.leftOperand;
-    return;
   } else if(calcItem.operator) {
     calcItem.rightOperand = `${calcItem.rightOperand}${num}`;
     display.textContent = calcItem.rightOperand;
@@ -67,7 +66,6 @@ const onClickClear = (): void => {
   if(calcItem.rightOperand) {
     calcItem.rightOperand = "";
     display.textContent = calcItem.leftOperand;
-    return;
   } else {
     calcItem = {
       ...calcItem,
