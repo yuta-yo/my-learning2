@@ -36,13 +36,7 @@ var onClickPlusAndMinus = function (plusOrMinus) {
     }
 };
 var onClickEqual = function () {
-    if (!calcItem.leftOperand) {
-        return;
-    }
-    else if (calcItem.leftOperand && !calcItem.operator) {
-        return;
-    }
-    else {
+    if (calcItem.leftOperand && calcItem.operator) {
         var totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
         display.textContent = totalStr;
         calcItem.leftOperand = "";

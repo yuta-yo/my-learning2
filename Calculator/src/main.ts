@@ -42,11 +42,7 @@ const onClickPlusAndMinus = (plusOrMinus: "plus" | "minus"): void => {
 }
 
 const onClickEqual = (): void => {
-  if(!calcItem.leftOperand) {
-    return;
-  } else if(calcItem.leftOperand && !calcItem.operator) {
-    return;
-  } else {
+  if(calcItem.leftOperand && calcItem.operator) {
     const totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
     display.textContent = totalStr;
     calcItem.leftOperand = "";
