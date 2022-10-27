@@ -77,9 +77,9 @@ const onClickClear = (): void => {
 }
 
 const calcForString = (leftOperand: string, rightOperand: string): string => {
-  if(calcItem.operator === "plus") {
+  if(calcItem.operator === OPERATOR.PLUS) {
     return `${Number(leftOperand) + Number(rightOperand)}`;
-  } else if(calcItem.operator === "minus") {
+  } else if(calcItem.operator === OPERATOR.MINUS) {
     return `${Number(leftOperand) - Number(rightOperand)}`;
   } else {
     return "";

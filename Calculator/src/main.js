@@ -73,10 +73,10 @@ var onClickClear = function () {
     }
 };
 var calcForString = function (leftOperand, rightOperand) {
-    if (calcItem.operator === "plus") {
+    if (calcItem.operator === OPERATOR.PLUS) {
         return "".concat(Number(leftOperand) + Number(rightOperand));
     }
-    else if (calcItem.operator === "minus") {
+    else if (calcItem.operator === OPERATOR.MINUS) {
         return "".concat(Number(leftOperand) - Number(rightOperand));
     }
     else {
