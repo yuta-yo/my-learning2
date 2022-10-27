@@ -36,7 +36,6 @@ const onClickPlusAndMinus = (plusOrMinus: "plus" | "minus"): void => {
       operator: plusOrMinus,
       rightOperand: "",
     }
-    return;
   } else if(!display.textContent) {
     return;
   } else if(!calcItem.leftOperand) {

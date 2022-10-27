@@ -39,7 +39,6 @@ var onClickPlusAndMinus = function (plusOrMinus) {
             operator: plusOrMinus,
             rightOperand: ""
         };
-        return;
     }
     else if (!display.textContent) {
         return;
