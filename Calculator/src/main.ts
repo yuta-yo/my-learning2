@@ -28,6 +28,9 @@ const onClickNumberBtn = (num: string): void => {
 }
 
 const onClickPlusAndMinus = (plusOrMinus: "plus" | "minus"): void => {
+  if(display.textContent === null) {
+    return;
+  }  
   if(calcItem.operator === "plus" || calcItem.operator === "minus") {   
     const totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
     display.textContent = totalStr;
@@ -36,8 +39,6 @@ const onClickPlusAndMinus = (plusOrMinus: "plus" | "minus"): void => {
       operator: plusOrMinus,
       rightOperand: "",
     }
-  } else if(!display.textContent) {
-    return;
   } else if(!calcItem.leftOperand) {
     calcItem = {
       ...calcItem,

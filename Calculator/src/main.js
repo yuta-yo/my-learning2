@@ -31,6 +31,9 @@ var onClickNumberBtn = function (num) {
     }
 };
 var onClickPlusAndMinus = function (plusOrMinus) {
+    if (display.textContent === null) {
+        return;
+    }
     if (calcItem.operator === "plus" || calcItem.operator === "minus") {
         var totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
         display.textContent = totalStr;
@@ -39,9 +42,6 @@ var onClickPlusAndMinus = function (plusOrMinus) {
             operator: plusOrMinus,
             rightOperand: ""
         };
-    }
-    else if (!display.textContent) {
-        return;
     }
     else if (!calcItem.leftOperand) {
         calcItem = __assign(__assign({}, calcItem), { leftOperand: display.textContent, operator: plusOrMinus });
