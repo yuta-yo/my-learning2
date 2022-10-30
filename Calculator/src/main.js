@@ -1,43 +1,88 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var OPERATOR;
+(function (OPERATOR) {
+    OPERATOR["PLUS"] = "plus";
+    OPERATOR["MINUS"] = "minus";
+})(OPERATOR || (OPERATOR = {}));
+var calcItem = {
+    leftOperand: "",
+    rightOperand: "",
+    operator: ""
+};
 var display = document.getElementById("display");
-var calculation = "";
-function onClickNumberBtn(btnNum) {
-    var _a;
-    if (display == null) {
+var onClickNumberBtn = function (num) {
+    if (!calcItem.operator) {
+        calcItem.leftOperand = "".concat(calcItem.leftOperand).concat(num);
+        display.textContent = calcItem.leftOperand;
+    }
+    else if (calcItem.operator) {
+        calcItem.rightOperand = "".concat(calcItem.rightOperand).concat(num);
+        display.textContent = calcItem.rightOperand;
+    }
+};
+var onClickPlusAndMinus = function (plusOrMinus) {
+    if (display.textContent === null) {
         return;
     }
-    // display画面に0か、calculationがカラか末尾に+がある場合は、display画面に押したボタンの数字が入力される。
-    // それ以外の場合はdisplay画面の数字の後ろに押したボタンの数字を付け加える。
-    if (((_a = display.textContent) === null || _a === void 0 ? void 0 : _a.slice(0, 1)) === "0" || calculation.slice(-3) === " + " || calculation === "") {
-        display.textContent = btnNum;
+    if (calcItem.operator === OPERATOR.PLUS || calcItem.operator === OPERATOR.MINUS) {
+        var totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
+        display.textContent = totalStr;
+        calcItem = {
+            leftOperand: totalStr,
+            operator: plusOrMinus,
+            rightOperand: ""
+        };
+    }
+    else if (!calcItem.leftOperand) {
+        calcItem = __assign(__assign({}, calcItem), { leftOperand: display.textContent, operator: plusOrMinus });
     }
     else {
-        display.textContent += btnNum;
+        calcItem.operator = plusOrMinus;
     }
-    calculation += btnNum;
-}
-function onClickPlus() {
-    if (!display.textContent) {
-        console.error("textContent is null.");
-        return;
+};
+var onClickEqual = function () {
+    if (calcItem.leftOperand && calcItem.operator) {
+        var totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
+        display.textContent = totalStr;
+        calcItem = {
+            leftOperand: "",
+            operator: "",
+            rightOperand: ""
+        };
     }
-    if (calculation === "") {
-        calculation = display.textContent;
+};
+var onClickClear = function () {
+    if (calcItem.rightOperand) {
+        calcItem.rightOperand = "";
+        display.textContent = calcItem.leftOperand;
     }
-    calculation += " + ";
-}
-function onClickEqual() {
-    display.textContent = new Function("return " + calculation)();
-    calculation = "";
-}
-function onClickClear() {
-    if (display.textContent === "0") {
-        calculation = "";
+    else {
+        calcItem = __assign(__assign({}, calcItem), { leftOperand: "", operator: "" });
+        display.textContent = "0";
     }
-    calculation = calculation.replace(/\d*$/, "");
-    display.textContent = "0";
-}
-// check用
+};
+var calcForString = function (leftOperand, rightOperand) {
+    if (calcItem.operator === OPERATOR.PLUS) {
+        return "".concat(Number(leftOperand) + Number(rightOperand));
+    }
+    else if (calcItem.operator === OPERATOR.MINUS) {
+        return "".concat(Number(leftOperand) - Number(rightOperand));
+    }
+    else {
+        return "";
+    }
+};
+// 確認用
 function check() {
-    console.log(calculation);
-    console.log(display.textContent);
+    console.log("".concat(calcItem.leftOperand).concat(calcItem.operator).concat(calcItem.rightOperand));
 }

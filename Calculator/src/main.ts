@@ -1,47 +1,93 @@
+enum OPERATOR {
+  PLUS = "plus",
+  MINUS = "minus" 
+}
+
+// [leftOperand] [operator(+,-)] [rightOperand] = displayの式をイメージしています。
+type Operator = "plus" | "minus" | "";
+type CalcItem = {
+  leftOperand: string;
+  rightOperand: string;
+  operator: Operator;
+}
+let calcItem: CalcItem = {
+  leftOperand: "",
+  rightOperand: "",
+  operator: "",
+}
+
 const display: HTMLElement = <HTMLElement>document.getElementById("display");
 
-let calculation: string = ""
-
-function onClickNumberBtn(btnNum: string): void {
-  if (display == null) {
-    return
+const onClickNumberBtn = (num: string): void => {
+  if(!calcItem.operator) {
+    calcItem.leftOperand = `${calcItem.leftOperand}${num}`;
+    display.textContent = calcItem.leftOperand;
+  } else if(calcItem.operator) {
+    calcItem.rightOperand = `${calcItem.rightOperand}${num}`;
+    display.textContent = calcItem.rightOperand;
   }
-  // display画面に0か、calculationがカラか末尾に+がある場合は、display画面に押したボタンの数字が入力される。
-  // それ以外の場合はdisplay画面の数字の後ろに押したボタンの数字を付け加える。
-  if (display.textContent?.slice(0, 1) === "0" || calculation.slice(-3) === " + " || calculation === "") {
-    display.textContent = btnNum
+}
+
+const onClickPlusAndMinus = (plusOrMinus: OPERATOR.PLUS | OPERATOR.MINUS): void => {
+  if(display.textContent === null) {
+    return;
+  }  
+  if(calcItem.operator === OPERATOR.PLUS || calcItem.operator === OPERATOR.MINUS) {   
+    const totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
+    display.textContent = totalStr;
+    calcItem = {
+      leftOperand: totalStr,
+      operator: plusOrMinus,
+      rightOperand: "",
+    }
+  } else if(!calcItem.leftOperand) {
+    calcItem = {
+      ...calcItem,
+      leftOperand: display.textContent,
+      operator: plusOrMinus,
+    }
   } else {
-    display.textContent += btnNum
+    calcItem.operator = plusOrMinus;
   }
-  calculation += btnNum
 }
 
-function onClickPlus(): void {
-  if (!display.textContent) {
-    console.error("textContent is null.")
-    return
+const onClickEqual = (): void => {
+  if(calcItem.leftOperand && calcItem.operator) {
+    const totalStr = calcForString(calcItem.leftOperand, calcItem.rightOperand);
+    display.textContent = totalStr;
+    calcItem = {
+      leftOperand: "",
+      operator: "",
+      rightOperand: "",
+    }
   }
-  if (calculation === "") {
-    calculation = display.textContent
-  }
-  calculation += " + "
 }
 
-function onClickEqual(): void {  
-  display.textContent = new Function("return " + calculation)();
-  calculation = "";
-}
-
-function onClickClear(): void {
-  if (display.textContent === "0") {
-    calculation = "";
+const onClickClear = (): void => {
+  if(calcItem.rightOperand) {
+    calcItem.rightOperand = "";
+    display.textContent = calcItem.leftOperand;
+  } else {
+    calcItem = {
+      ...calcItem,
+      leftOperand: "",
+      operator: "",
+    }
+    display.textContent = "0";
   }
-  calculation = calculation.replace(/\d*$/, "");
-  display.textContent = "0";
 }
 
-// check用
+const calcForString = (leftOperand: string, rightOperand: string): string => {
+  if(calcItem.operator === OPERATOR.PLUS) {
+    return `${Number(leftOperand) + Number(rightOperand)}`;
+  } else if(calcItem.operator === OPERATOR.MINUS) {
+    return `${Number(leftOperand) - Number(rightOperand)}`;
+  } else {
+    return "";
+  } 
+}
+
+// 確認用
 function check(): void {
-  console.log(calculation)
-  console.log(display.textContent)
+  console.log(`${calcItem.leftOperand}${calcItem.operator}${calcItem.rightOperand}`);
 }

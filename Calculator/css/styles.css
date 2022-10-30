@@ -85,6 +85,10 @@
   grid-column: 3 / 4;
   grid-row: 4 / 5;
 }
+#minus {
+  grid-column: 4 / 5;
+  grid-row: 4 / 5;
+}
 
 #num1 {
   grid-column: 1 / 2;
