@@ -4,10 +4,11 @@ enum OPERATOR {
 }
 
 // [leftOperand] [operator(+,-)] [rightOperand] = displayの式をイメージしています。
+type Operator = "plus" | "minus" | "";
 type CalcItem = {
   leftOperand: string;
   rightOperand: string;
-  operator: "plus" | "minus" | "";
+  operator: Operator;
 }
 let calcItem: CalcItem = {
   leftOperand: "",
