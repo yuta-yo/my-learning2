@@ -37,7 +37,7 @@ var onClickNumberBtn = function (num) {
         display.textContent = calcItem.leftOperand;
     }
 };
-var onClickPlusAndMinus = function (plusOrMinus) {
+var onClickPlusAndMinusBtn = function (plusOrMinus) {
     if (display.textContent === null) {
         return;
     }
@@ -65,7 +65,7 @@ var onClickPlusAndMinus = function (plusOrMinus) {
         calcItem.leftOperator = plusOrMinus;
     }
 };
-var onClickMultiply = function (multiply) {
+var onClickMultiplyBtn = function (multiply) {
     if (display.textContent === null) {
         return;
     }
@@ -90,7 +90,7 @@ var onClickMultiply = function (multiply) {
         calcItem.leftOperator = OPERATOR.MULTIPLY;
     }
 };
-var onClickEqual = function () {
+var onClickEqualBtn = function () {
     if (calcItem.rightOperand) {
         calcItem.centerOperand = calcForString(calcItem.rightOperator, calcItem.centerOperand, calcItem.rightOperand);
         var totalStr = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
@@ -115,7 +115,7 @@ var onClickEqual = function () {
         };
     }
 };
-var onClickClear = function () {
+var onClickClearBtn = function () {
     if (calcItem.rightOperand) {
         calcItem.rightOperand = "";
         display.textContent = calcItem.centerOperand;

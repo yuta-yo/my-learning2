@@ -36,7 +36,7 @@ const onClickNumberBtn = (num: string): void => {
   }
 }
 
-const onClickPlusAndMinus = (plusOrMinus: OPERATOR.PLUS | OPERATOR.MINUS): void => {
+const onClickPlusAndMinusBtn = (plusOrMinus: OPERATOR.PLUS | OPERATOR.MINUS): void => {
   if(display.textContent === null) {
     return;
   }
@@ -71,7 +71,7 @@ const onClickPlusAndMinus = (plusOrMinus: OPERATOR.PLUS | OPERATOR.MINUS): void 
   }
 }
 
-const onClickMultiply = (multiply: OPERATOR.MULTIPLY): void => {
+const onClickMultiplyBtn = (multiply: OPERATOR.MULTIPLY): void => {
   if(display.textContent === null) {
     return;
   }
@@ -110,7 +110,7 @@ const onClickMultiply = (multiply: OPERATOR.MULTIPLY): void => {
   }
 }
 
-const onClickEqual = (): void => {
+const onClickEqualBtn = (): void => {
   if(calcItem.rightOperand) {
     calcItem.centerOperand = calcForString(calcItem.rightOperator,calcItem.centerOperand, calcItem.rightOperand);
     const totalStr = calcForString(calcItem.leftOperator,calcItem.leftOperand, calcItem.centerOperand);
@@ -135,7 +135,7 @@ const onClickEqual = (): void => {
   }
 }
 
-const onClickClear = (): void => {
+const onClickClearBtn = (): void => {
   if(calcItem.rightOperand) {
     calcItem.rightOperand = "";
     display.textContent = calcItem.centerOperand;
