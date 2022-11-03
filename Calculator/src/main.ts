@@ -42,21 +42,19 @@ const onClickPlusAndMinusBtn = (plusOrMinus: OPERATOR.PLUS | OPERATOR.MINUS): vo
   }
   if(calcItem.rightOperator === OPERATOR.MULTIPLY) {
     calcItem.centerOperand = calcForString(calcItem.rightOperator,calcItem.centerOperand, calcItem.rightOperand);
-    const totalStr = calcForString(calcItem.leftOperator,calcItem.leftOperand, calcItem.centerOperand);
-    display.textContent = totalStr;
+    display.textContent = calcForString(calcItem.leftOperator,calcItem.leftOperand, calcItem.centerOperand);
     calcItem = {
-      leftOperand: totalStr,
+      leftOperand: display.textContent,
       centerOperand: "",
       rightOperand: "",
       leftOperator: plusOrMinus,
       rightOperator: ""
     }
   } else if(calcItem.leftOperator === OPERATOR.PLUS || calcItem.leftOperator === OPERATOR.MINUS || calcItem.leftOperator === OPERATOR.MULTIPLY) {   
-    const totalStr = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
-    display.textContent = totalStr;
+    display.textContent = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
     calcItem = {
       ...calcItem,
-      leftOperand: totalStr,
+      leftOperand: display.textContent,
       centerOperand: "",
       leftOperator: plusOrMinus
     }
@@ -76,20 +74,18 @@ const onClickMultiplyBtn = (multiply: OPERATOR.MULTIPLY): void => {
     return;
   }
   if(calcItem.rightOperator === OPERATOR.MULTIPLY) {
-    const totalStr = calcForString(calcItem.rightOperator, calcItem.centerOperand, calcItem.rightOperand);
-    display.textContent = totalStr;
+    display.textContent = calcForString(calcItem.rightOperator, calcItem.centerOperand, calcItem.rightOperand);
     calcItem = {
       ...calcItem,
-      centerOperand: totalStr,
+      centerOperand: display.textContent,
       rightOperand: "",
       rightOperator: multiply
     }
   } else if(calcItem.leftOperator === OPERATOR.MULTIPLY) {
-    const totalStr = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
-    display.textContent = totalStr;
+    display.textContent = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
     calcItem = {
       ...calcItem,
-      leftOperand: totalStr,
+      leftOperand: display.textContent,
       centerOperand: "",
       leftOperator: multiply
     }
@@ -113,8 +109,7 @@ const onClickMultiplyBtn = (multiply: OPERATOR.MULTIPLY): void => {
 const onClickEqualBtn = (): void => {
   if(calcItem.rightOperand) {
     calcItem.centerOperand = calcForString(calcItem.rightOperator,calcItem.centerOperand, calcItem.rightOperand);
-    const totalStr = calcForString(calcItem.leftOperator,calcItem.leftOperand, calcItem.centerOperand);
-    display.textContent = totalStr;
+    display.textContent = calcForString(calcItem.leftOperator,calcItem.leftOperand, calcItem.centerOperand);
     calcItem = {
       leftOperand: "",
       centerOperand: "",
@@ -123,8 +118,7 @@ const onClickEqualBtn = (): void => {
       rightOperator: ""
     }
   } else if(calcItem.centerOperand && !calcItem.rightOperator) {
-    const totalStr = calcForString(calcItem.leftOperator,calcItem.leftOperand, calcItem.centerOperand);
-    display.textContent = totalStr;
+    display.textContent = calcForString(calcItem.leftOperator,calcItem.leftOperand, calcItem.centerOperand);
     calcItem = {
       leftOperand: "",
       centerOperand: "",

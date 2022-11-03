@@ -43,10 +43,9 @@ var onClickPlusAndMinusBtn = function (plusOrMinus) {
     }
     if (calcItem.rightOperator === OPERATOR.MULTIPLY) {
         calcItem.centerOperand = calcForString(calcItem.rightOperator, calcItem.centerOperand, calcItem.rightOperand);
-        var totalStr = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
-        display.textContent = totalStr;
+        display.textContent = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
         calcItem = {
-            leftOperand: totalStr,
+            leftOperand: display.textContent,
             centerOperand: "",
             rightOperand: "",
             leftOperator: plusOrMinus,
@@ -54,9 +53,8 @@ var onClickPlusAndMinusBtn = function (plusOrMinus) {
         };
     }
     else if (calcItem.leftOperator === OPERATOR.PLUS || calcItem.leftOperator === OPERATOR.MINUS || calcItem.leftOperator === OPERATOR.MULTIPLY) {
-        var totalStr = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
-        display.textContent = totalStr;
-        calcItem = __assign(__assign({}, calcItem), { leftOperand: totalStr, centerOperand: "", leftOperator: plusOrMinus });
+        display.textContent = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
+        calcItem = __assign(__assign({}, calcItem), { leftOperand: display.textContent, centerOperand: "", leftOperator: plusOrMinus });
     }
     else if (!calcItem.leftOperand) {
         calcItem = __assign(__assign({}, calcItem), { leftOperand: display.textContent, leftOperator: plusOrMinus });
@@ -70,14 +68,12 @@ var onClickMultiplyBtn = function (multiply) {
         return;
     }
     if (calcItem.rightOperator === OPERATOR.MULTIPLY) {
-        var totalStr = calcForString(calcItem.rightOperator, calcItem.centerOperand, calcItem.rightOperand);
-        display.textContent = totalStr;
-        calcItem = __assign(__assign({}, calcItem), { centerOperand: totalStr, rightOperand: "", rightOperator: multiply });
+        display.textContent = calcForString(calcItem.rightOperator, calcItem.centerOperand, calcItem.rightOperand);
+        calcItem = __assign(__assign({}, calcItem), { centerOperand: display.textContent, rightOperand: "", rightOperator: multiply });
     }
     else if (calcItem.leftOperator === OPERATOR.MULTIPLY) {
-        var totalStr = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
-        display.textContent = totalStr;
-        calcItem = __assign(__assign({}, calcItem), { leftOperand: totalStr, centerOperand: "", leftOperator: multiply });
+        display.textContent = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
+        calcItem = __assign(__assign({}, calcItem), { leftOperand: display.textContent, centerOperand: "", leftOperator: multiply });
     }
     else if (calcItem.leftOperator === OPERATOR.PLUS || calcItem.leftOperator === OPERATOR.MINUS) {
         display.textContent = calcItem.centerOperand;
@@ -93,8 +89,7 @@ var onClickMultiplyBtn = function (multiply) {
 var onClickEqualBtn = function () {
     if (calcItem.rightOperand) {
         calcItem.centerOperand = calcForString(calcItem.rightOperator, calcItem.centerOperand, calcItem.rightOperand);
-        var totalStr = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
-        display.textContent = totalStr;
+        display.textContent = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
         calcItem = {
             leftOperand: "",
             centerOperand: "",
@@ -104,8 +99,7 @@ var onClickEqualBtn = function () {
         };
     }
     else if (calcItem.centerOperand && !calcItem.rightOperator) {
-        var totalStr = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
-        display.textContent = totalStr;
+        display.textContent = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
         calcItem = {
             leftOperand: "",
             centerOperand: "",
