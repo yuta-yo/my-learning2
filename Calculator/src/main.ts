@@ -111,7 +111,9 @@ const onClickEqualBtn = (): void => {
     calcItem.centerOperand = calcForString(calcItem.rightOperator,calcItem.centerOperand, calcItem.rightOperand);
     display.textContent = calcForString(calcItem.leftOperator,calcItem.leftOperand, calcItem.centerOperand);
     calcItemReset();
-  } else if(calcItem.centerOperand && !calcItem.rightOperator) {
+    return;
+  }
+  if(calcItem.centerOperand && !calcItem.rightOperator) {
     display.textContent = calcForString(calcItem.leftOperator,calcItem.leftOperand, calcItem.centerOperand);
     calcItemReset();
   }
@@ -121,7 +123,9 @@ const onClickClearBtn = (): void => {
   if(calcItem.rightOperand) {
     calcItem.rightOperand = "";
     display.textContent = calcItem.centerOperand;
-  } else if(calcItem.centerOperand && !calcItem.rightOperator) {
+    return;
+  }
+  if(calcItem.centerOperand && !calcItem.rightOperator) {
     calcItem.centerOperand = "";
     display.textContent = calcItem.leftOperand;
   } else {

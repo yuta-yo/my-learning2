@@ -91,8 +91,9 @@ var onClickEqualBtn = function () {
         calcItem.centerOperand = calcForString(calcItem.rightOperator, calcItem.centerOperand, calcItem.rightOperand);
         display.textContent = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
         calcItemReset();
+        return;
     }
-    else if (calcItem.centerOperand && !calcItem.rightOperator) {
+    if (calcItem.centerOperand && !calcItem.rightOperator) {
         display.textContent = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
         calcItemReset();
     }
@@ -101,8 +102,9 @@ var onClickClearBtn = function () {
     if (calcItem.rightOperand) {
         calcItem.rightOperand = "";
         display.textContent = calcItem.centerOperand;
+        return;
     }
-    else if (calcItem.centerOperand && !calcItem.rightOperator) {
+    if (calcItem.centerOperand && !calcItem.rightOperator) {
         calcItem.centerOperand = "";
         display.textContent = calcItem.leftOperand;
     }
