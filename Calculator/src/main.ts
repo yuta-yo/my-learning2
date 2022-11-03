@@ -110,22 +110,10 @@ const onClickEqualBtn = (): void => {
   if(calcItem.rightOperand) {
     calcItem.centerOperand = calcForString(calcItem.rightOperator,calcItem.centerOperand, calcItem.rightOperand);
     display.textContent = calcForString(calcItem.leftOperator,calcItem.leftOperand, calcItem.centerOperand);
-    calcItem = {
-      leftOperand: "",
-      centerOperand: "",
-      rightOperand: "",
-      leftOperator: "",
-      rightOperator: ""
-    }
+    calcItemReset();
   } else if(calcItem.centerOperand && !calcItem.rightOperator) {
     display.textContent = calcForString(calcItem.leftOperator,calcItem.leftOperand, calcItem.centerOperand);
-    calcItem = {
-      leftOperand: "",
-      centerOperand: "",
-      rightOperand: "",
-      leftOperator: "",
-      rightOperator: ""
-    }
+    calcItemReset();
   }
 }
 
@@ -147,6 +135,7 @@ const onClickClearBtn = (): void => {
     display.textContent = "0";
   }
 }
+
 const calcForString = (operator: Operator, leftOperand: string, rightOperand: string): string => {
   if(operator === OPERATOR.PLUS) {
     return `${Number(leftOperand) + Number(rightOperand)}`;
@@ -157,6 +146,16 @@ const calcForString = (operator: Operator, leftOperand: string, rightOperand: st
   } else {
     return "";
   } 
+}
+
+const calcItemReset = (): CalcItem => {
+  return calcItem = {
+    leftOperand: "",
+    centerOperand: "",
+    rightOperand: "",
+    leftOperator: "",
+    rightOperator: ""
+  }
 }
 
 // 確認用

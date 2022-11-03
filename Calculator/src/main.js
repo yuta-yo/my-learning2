@@ -90,23 +90,11 @@ var onClickEqualBtn = function () {
     if (calcItem.rightOperand) {
         calcItem.centerOperand = calcForString(calcItem.rightOperator, calcItem.centerOperand, calcItem.rightOperand);
         display.textContent = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
-        calcItem = {
-            leftOperand: "",
-            centerOperand: "",
-            rightOperand: "",
-            leftOperator: "",
-            rightOperator: ""
-        };
+        calcItemReset();
     }
     else if (calcItem.centerOperand && !calcItem.rightOperator) {
         display.textContent = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
-        calcItem = {
-            leftOperand: "",
-            centerOperand: "",
-            rightOperand: "",
-            leftOperator: "",
-            rightOperator: ""
-        };
+        calcItemReset();
     }
 };
 var onClickClearBtn = function () {
@@ -136,6 +124,15 @@ var calcForString = function (operator, leftOperand, rightOperand) {
     else {
         return "";
     }
+};
+var calcItemReset = function () {
+    return calcItem = {
+        leftOperand: "",
+        centerOperand: "",
+        rightOperand: "",
+        leftOperator: "",
+        rightOperator: ""
+    };
 };
 // 確認用
 function check() {
