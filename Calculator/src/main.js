@@ -24,6 +24,8 @@ var calcItem = {
 };
 var display = document.getElementById("display");
 var onClickNumberBtn = function (num) {
+    // どの位置のOperandに数字を入れるか決定するため、右から左へOperatorの有無を評価する。
+    // Operatorがある場合、該当するOperatorの右のOperandに数字を入れる。
     if (calcItem.rightOperator) {
         calcItem.rightOperand = "".concat(calcItem.rightOperand).concat(num);
         display.textContent = calcItem.rightOperand;
@@ -32,7 +34,7 @@ var onClickNumberBtn = function (num) {
         calcItem.centerOperand = "".concat(calcItem.centerOperand).concat(num);
         display.textContent = calcItem.centerOperand;
     }
-    else if (!calcItem.leftOperator) {
+    else {
         calcItem.leftOperand = "".concat(calcItem.leftOperand).concat(num);
         display.textContent = calcItem.leftOperand;
     }

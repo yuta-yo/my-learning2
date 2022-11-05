@@ -24,13 +24,15 @@ let calcItem: CalcItem = {
 const display: HTMLElement = <HTMLElement>document.getElementById("display");
 
 const onClickNumberBtn = (num: string): void => {
+  // どの位置のOperandに数字を入れるか決定するため、右から左へOperatorの有無を評価する。
+  // Operatorがある場合、該当するOperatorの右のOperandに数字を入れる。
   if(calcItem.rightOperator) {
     calcItem.rightOperand = `${calcItem.rightOperand}${num}`;
     display.textContent = calcItem.rightOperand;
   } else if(calcItem.leftOperator) {
     calcItem.centerOperand = `${calcItem.centerOperand}${num}`;
     display.textContent = calcItem.centerOperand;
-  } else if(!calcItem.leftOperator) {
+  } else {
     calcItem.leftOperand = `${calcItem.leftOperand}${num}`;
     display.textContent = calcItem.leftOperand;
   }
