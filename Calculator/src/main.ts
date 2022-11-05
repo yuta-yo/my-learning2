@@ -71,7 +71,7 @@ const onClickPlusAndMinusBtn = (plusOrMinus: OPERATOR.PLUS | OPERATOR.MINUS): vo
   }
 }
 
-const onClickMultiplyBtn = (multiply: OPERATOR.MULTIPLY): void => {
+const onClickMultiplyBtn = (): void => {
   if(display.textContent === null) {
     return;
   }
@@ -81,7 +81,7 @@ const onClickMultiplyBtn = (multiply: OPERATOR.MULTIPLY): void => {
       ...calcItem,
       centerOperand: display.textContent,
       rightOperand: "",
-      rightOperator: multiply
+      rightOperator: OPERATOR.MULTIPLY
     }
   } else if(calcItem.leftOperator === OPERATOR.MULTIPLY) {
     display.textContent = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
@@ -89,13 +89,13 @@ const onClickMultiplyBtn = (multiply: OPERATOR.MULTIPLY): void => {
       ...calcItem,
       leftOperand: display.textContent,
       centerOperand: "",
-      leftOperator: multiply
+      leftOperator: OPERATOR.MULTIPLY
     }
   } else if(calcItem.leftOperator === OPERATOR.PLUS || calcItem.leftOperator === OPERATOR.MINUS) {   
     display.textContent = calcItem.centerOperand;
     calcItem = {
       ...calcItem,
-      rightOperator: multiply
+      rightOperator: OPERATOR.MULTIPLY
     }
   } else if(!calcItem.leftOperand) {
     calcItem = {

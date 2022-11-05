@@ -65,21 +65,21 @@ var onClickPlusAndMinusBtn = function (plusOrMinus) {
         calcItem.leftOperator = plusOrMinus;
     }
 };
-var onClickMultiplyBtn = function (multiply) {
+var onClickMultiplyBtn = function () {
     if (display.textContent === null) {
         return;
     }
     if (calcItem.rightOperator === OPERATOR.MULTIPLY) {
         display.textContent = calcForString(calcItem.rightOperator, calcItem.centerOperand, calcItem.rightOperand);
-        calcItem = __assign(__assign({}, calcItem), { centerOperand: display.textContent, rightOperand: "", rightOperator: multiply });
+        calcItem = __assign(__assign({}, calcItem), { centerOperand: display.textContent, rightOperand: "", rightOperator: OPERATOR.MULTIPLY });
     }
     else if (calcItem.leftOperator === OPERATOR.MULTIPLY) {
         display.textContent = calcForString(calcItem.leftOperator, calcItem.leftOperand, calcItem.centerOperand);
-        calcItem = __assign(__assign({}, calcItem), { leftOperand: display.textContent, centerOperand: "", leftOperator: multiply });
+        calcItem = __assign(__assign({}, calcItem), { leftOperand: display.textContent, centerOperand: "", leftOperator: OPERATOR.MULTIPLY });
     }
     else if (calcItem.leftOperator === OPERATOR.PLUS || calcItem.leftOperator === OPERATOR.MINUS) {
         display.textContent = calcItem.centerOperand;
-        calcItem = __assign(__assign({}, calcItem), { rightOperator: multiply });
+        calcItem = __assign(__assign({}, calcItem), { rightOperator: OPERATOR.MULTIPLY });
     }
     else if (!calcItem.leftOperand) {
         calcItem = __assign(__assign({}, calcItem), { leftOperand: display.textContent, leftOperator: OPERATOR.MULTIPLY });
