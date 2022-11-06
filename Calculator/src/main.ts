@@ -154,8 +154,8 @@ const calcForString = (operator: Operator, leftOperand: string, rightOperand: st
   } 
 }
 
-const calcItemReset = (): CalcItem => {
-  return calcItem = {
+const calcItemReset = (): void => {
+  calcItem = {
     leftOperand: "",
     centerOperand: "",
     rightOperand: "",

@@ -130,7 +130,7 @@ var calcForString = function (operator, leftOperand, rightOperand) {
     }
 };
 var calcItemReset = function () {
-    return calcItem = {
+    calcItem = {
         leftOperand: "",
         centerOperand: "",
         rightOperand: "",
