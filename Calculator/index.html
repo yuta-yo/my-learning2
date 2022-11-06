@@ -9,20 +9,21 @@
   <body>
     <div id="grid">
       <div id="display">0</div>
-      <div id="clear" class="others" onclick="onClickClear()">C</div>
+      <div id="clear" class="others" onclick="onClickClearBtn()">C</div>
       <div id="num7" class="number" onclick="onClickNumberBtn('7')">7</div>
       <div id="num8" class="number" onclick="onClickNumberBtn('8')">8</div>
       <div id="num9" class="number" onclick="onClickNumberBtn('9')">9</div>
+      <div id="multiply" class="operator" onclick="onClickMultiplyBtn()">×</div>
       <div id="num4" class="number" onclick="onClickNumberBtn('4')">4</div>
       <div id="num5" class="number" onclick="onClickNumberBtn('5')">5</div>
       <div id="num6" class="number" onclick="onClickNumberBtn('6')">6</div>
-      <div id="minus" class="operator" onclick="onClickPlusAndMinus('minus')">-</div>
+      <div id="minus" class="operator" onclick="onClickPlusAndMinusBtn('minus')">-</div>
       <div id="num1" class="number" onclick="onClickNumberBtn('1')">1</div>
       <div id="num2" class="number" onclick="onClickNumberBtn('2')">2</div>
       <div id="num3" class="number" onclick="onClickNumberBtn('3')">3</div>
-      <div id="plus" class="operator" onclick="onClickPlusAndMinus('plus')">+</div>
+      <div id="plus" class="operator" onclick="onClickPlusAndMinusBtn('plus')">+</div>
       <div id="num0" class="number" onclick="onClickNumberBtn('0')">0</div>
-      <div id="equal" class="operator" onclick="onClickEqual()">=</div>
+      <div id="equal" class="operator" onclick="onClickEqualBtn()">=</div>
     </div>
     <input type="button" onclick="check()" value="check" id="check">
 </body>
